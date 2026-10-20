@@ -1,0 +1,9 @@
+# Visual Studio build output
+.vs/
+x64/
+Debug/
+Release/
+*.vcxproj.user
+# large test graphs, too big for the repository
+graph100k.txt
+graph1m.txt
