@@ -58,10 +58,11 @@ Start with option 10 to read a graph from a file.
 
 ## Performance
 
-Reading a random graph with 1,000,000 vertices and 4,000,000 edges and running BFS on it takes about 7 seconds (g++ -O2).
+On a random graph with 1,000,000 vertices and 4,000,000 edges (g++ -O2), reading the file and building the graph takes about 7 seconds, and BFS takes about 2 seconds.
 
 ## What I would improve
 
+- BFS keeps distances and predecessors in `unordered_map`s, which allocate a node for every vertex it reaches. Vectors indexed by vertex would make it much faster.
 - Kosaraju and the biconnected components use a recursive DFS, which can run out of stack on very large graphs. An iterative DFS would fix this.
 - The random graph generator computes `n * (n - 1)` as an `int`, which overflows for very large `n`.
 - `is_edge` could be O(1) by looking up the cost map instead of scanning the adjacency list.
